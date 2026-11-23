@@ -1,3 +1,4 @@
+
 import { useState } from 'react'
 import { normalizar } from '../lib/formatadores'
 import { useEventos, useCategorias } from '../hooks/useApi'
@@ -9,8 +10,16 @@ export default function Home() {
   const [categoria, setCategoria] = useState<number | null>(null)
   const [busca, setBusca] = useState('')
 
-  const { dados: eventos, carregando: carregandoEventos, erro: erroEventos } = useEventos()
-  const { dados: categorias, carregando: carregandoCategorias } = useCategorias()
+  const {
+    dados: eventos,
+    carregando: carregandoEventos,
+    erro: erroEventos,
+  } = useEventos()
+
+  const {
+    dados: categorias,
+    carregando: carregandoCategorias,
+  } = useCategorias()
 
   const termo = normalizar(busca.trim())
 
@@ -27,13 +36,13 @@ export default function Home() {
 
   return (
     <>
-      <section className="mb-8 grid items-center gap-6 md:grid-cols-2">
-        <div>
-          <h1 className="mb-2 text-4xl font-semibold leading-tight">
+      <section className="mb-8 grid items-center gap-5 md:mb-10 md:grid-cols-2 md:gap-6">
+        <div className="min-w-0">
+          <h1 className="mb-3 break-words text-3xl font-semibold leading-tight sm:text-4xl md:text-5xl">
             Encontre cultura perto de você
           </h1>
 
-          <p className="mb-5 text-tinta-suave">
+          <p className="mb-5 text-sm leading-relaxed text-tinta-suave sm:text-base">
             Teatro, música, cinema, dança e mais, de graça ou a preços baixos.
           </p>
 
@@ -47,7 +56,7 @@ export default function Home() {
             value={busca}
             onChange={(e) => setBusca(e.target.value)}
             placeholder="Buscar evento ou local"
-            className="h-11 w-full max-w-md rounded border-2 border-borda px-3"
+            className="h-12 w-full max-w-md rounded border-2 border-borda px-3 text-base"
           />
         </div>
 
@@ -58,11 +67,15 @@ export default function Home() {
         />
       </section>
 
-      <h2 className="mb-3 text-2xl font-semibold">Próximos eventos</h2>
+      <h2 className="mb-3 text-xl font-semibold sm:text-2xl">
+        Próximos eventos
+      </h2>
 
       <div className="mb-6">
         {carregandoCategorias ? (
-          <p className="text-sm text-tinta-suave">Carregando categorias...</p>
+          <p className="text-sm text-tinta-suave">
+            Carregando categorias...
+          </p>
         ) : (
           <FiltroCategorias
             categorias={categorias ?? []}
@@ -73,7 +86,9 @@ export default function Home() {
       </div>
 
       {carregandoEventos ? (
-        <p className="py-6 text-tinta-suave">Carregando eventos...</p>
+        <p className="py-6 text-tinta-suave">
+          Carregando eventos...
+        </p>
       ) : erroEventos ? (
         <p className="py-6 text-red-600">
           Não foi possível carregar os eventos: {erroEventos}
