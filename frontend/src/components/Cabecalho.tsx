@@ -18,16 +18,20 @@ export default function Cabecalho() {
 
   return (
     <header className="border-b border-neutral-800 bg-fundo text-texto">
-      <div className="mx-auto flex h-14 max-w-5xl items-center justify-between px-5">
-        <Link to="/" className="flex items-center gap-2">
-          <img src={simbolo} alt="" className="h-8 w-auto" />
+      <div className="mx-auto flex h-14 max-w-5xl items-center justify-between gap-3 px-3 sm:px-5">
+        <Link to="/" className="flex min-w-0 shrink items-center gap-2">
+          <img
+            src={simbolo}
+            alt=""
+            className="h-8 w-auto shrink-0"
+          />
 
-          <span className="text-xl font-extrabold tracking-tight text-white">
+          <span className="whitespace-nowrap text-sm font-extrabold tracking-tight text-white sm:text-xl">
             Casa De Cultura <span className="text-destaque">São Mateus</span>
           </span>
         </Link>
 
-        <nav className="flex items-center gap-5 text-sm">
+        <nav className="flex shrink-0 items-center gap-5 text-sm">
           <NavLink to="/" end className={link}>
             Eventos
           </NavLink>
@@ -53,6 +57,7 @@ export default function Cabecalho() {
               <span className="hidden text-texto-suave transition-colors hover:text-destaque sm:inline">
                 Olá, {usuario?.nome || usuario?.email || 'usuário'}!
               </span>
+
               <button
                 type="button"
                 onClick={sair}
