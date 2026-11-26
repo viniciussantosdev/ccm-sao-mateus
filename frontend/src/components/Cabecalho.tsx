@@ -8,8 +8,8 @@ export default function Cabecalho() {
 
   const link = ({ isActive }: { isActive: boolean }) =>
     isActive
-      ? 'font-semibold text-destaque'
-      : 'text-texto-suave hover:text-destaque'
+      ? 'whitespace-nowrap font-semibold text-destaque'
+      : 'whitespace-nowrap text-texto-suave hover:text-destaque'
 
   function sair() {
     logout()
@@ -62,7 +62,8 @@ export default function Cabecalho() {
         </div>
 
         {/* Navegação */}
-        <nav className="flex min-h-11 items-center justify-center gap-6 border-t border-neutral-800 text-sm sm:min-h-0 sm:justify-end sm:border-0 sm:pb-3">
+        <nav className="flex min-h-11 flex-wrap items-center justify-center gap-x-4 gap-y-2 border-t border-neutral-800 py-3 text-xs sm:min-h-0 sm:flex-nowrap sm:justify-end sm:gap-6 sm:border-0 sm:py-0 sm:pb-3 sm:text-sm">
+
           <NavLink to="/" end className={link}>
             Eventos
           </NavLink>
@@ -83,17 +84,21 @@ export default function Cabecalho() {
             </NavLink>
           )}
 
-          <div className="flex items-center gap-3 sm:hidden">
+          {/* Login e saída somente no celular */}
+          <div className="flex shrink-0 items-center gap-3 sm:hidden">
             {autenticado ? (
               <button
                 type="button"
                 onClick={sair}
-                className="font-semibold text-destaque"
+                className="whitespace-nowrap font-semibold text-destaque"
               >
                 Sair
               </button>
             ) : (
-              <Link to="/login" className="font-semibold text-destaque">
+              <Link
+                to="/login"
+                className="whitespace-nowrap font-semibold text-destaque"
+              >
                 Entrar
               </Link>
             )}
