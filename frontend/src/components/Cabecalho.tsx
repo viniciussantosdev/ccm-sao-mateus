@@ -1,4 +1,3 @@
-
 import { Link, NavLink, useNavigate } from 'react-router'
 import simbolo from '../assets/ccaimagemmenor.png'
 import { useAuth } from '../context/AuthContext'
@@ -21,22 +20,47 @@ export default function Cabecalho() {
     <header className="border-b border-neutral-800 bg-fundo text-texto">
       <div className="mx-auto w-full max-w-7xl px-4 sm:px-5">
 
-        {/* Logo e nome */}
-        <div className="flex h-14 items-center justify-center sm:justify-between">
-          <Link to="/" className="flex items-center justify-center gap-2">
+        {/* Cabeçalho para computador */}
+        <div className="hidden min-h-16 items-center justify-between gap-6 lg:flex">
+
+          {/* Logo */}
+          <Link to="/" className="flex shrink-0 items-center gap-2">
             <img
               src={simbolo}
               alt=""
-              className="h-8 w-auto shrink-0"
+              className="h-8 w-auto"
             />
 
-            <span className="hidden text-xl font-extrabold tracking-tight text-white sm:inline">
+            <span className="whitespace-nowrap text-xl font-extrabold tracking-tight text-white">
               Casa De Cultura <span className="text-destaque">São Mateus</span>
             </span>
           </Link>
 
-          {/* Login e saudação no computador */}
-          <div className="hidden shrink-0 items-center gap-4 sm:flex">
+          {/* Navegação, saudação e acesso na mesma linha */}
+          <div className="flex min-w-0 items-center justify-end gap-6">
+
+            <nav className="flex shrink-0 items-center gap-6 text-sm">
+              <NavLink to="/" end className={link}>
+                Eventos
+              </NavLink>
+
+              <NavLink to="/sobre" className={link}>
+                Sobre nós
+              </NavLink>
+
+              {autenticado && !isAdmin && (
+                <NavLink to="/meus-eventos" className={link}>
+                  Meus Eventos
+                </NavLink>
+              )}
+
+              {autenticado && isAdmin && (
+                <NavLink to="/admin" className={link}>
+                  Administrador
+                </NavLink>
+              )}
+            </nav>
+
             {autenticado && (
               <span className="whitespace-nowrap text-sm text-texto-suave">
                 Olá, {usuario?.nome || usuario?.email || 'usuário'}!
@@ -62,31 +86,43 @@ export default function Cabecalho() {
           </div>
         </div>
 
-        {/* Navegação */}
-        <nav className="flex min-h-11 flex-wrap items-center justify-center gap-x-4 gap-y-2 border-t border-neutral-800 py-3 text-xs sm:min-h-0 sm:flex-nowrap sm:justify-end sm:gap-6 sm:border-0 sm:py-0 sm:pb-3 sm:text-sm">
+        {/* Cabeçalho para celular e telas menores */}
+        <div className="lg:hidden">
 
-          <NavLink to="/" end className={link}>
-            Eventos
-          </NavLink>
+          {/* Logo centralizada */}
+          <div className="flex h-14 items-center justify-center">
+            <Link to="/" className="flex items-center justify-center gap-2">
+              <img
+                src={simbolo}
+                alt=""
+                className="h-8 w-auto shrink-0"
+              />
+            </Link>
+          </div>
 
-          <NavLink to="/sobre" className={link}>
-            Sobre nós
-          </NavLink>
+          {/* Navegação abaixo da logo */}
+          <nav className="flex min-h-11 flex-wrap items-center justify-center gap-x-4 gap-y-2 border-t border-neutral-800 py-3 text-xs">
 
-          {autenticado && !isAdmin && (
-            <NavLink to="/meus-eventos" className={link}>
-              Meus Eventos
+            <NavLink to="/" end className={link}>
+              Eventos
             </NavLink>
-          )}
 
-          {autenticado && isAdmin && (
-            <NavLink to="/admin" className={link}>
-              Administrador
+            <NavLink to="/sobre" className={link}>
+              Sobre nós
             </NavLink>
-          )}
 
-          {/* Login e saída somente no celular */}
-          <div className="flex shrink-0 items-center gap-3 sm:hidden">
+            {autenticado && !isAdmin && (
+              <NavLink to="/meus-eventos" className={link}>
+                Meus Eventos
+              </NavLink>
+            )}
+
+            {autenticado && isAdmin && (
+              <NavLink to="/admin" className={link}>
+                Administrador
+              </NavLink>
+            )}
+
             {autenticado ? (
               <button
                 type="button"
@@ -103,8 +139,9 @@ export default function Cabecalho() {
                 Entrar
               </Link>
             )}
-          </div>
-        </nav>
+          </nav>
+        </div>
+
       </div>
     </header>
   )
