@@ -1,12 +1,12 @@
 @import "tailwindcss";
 
 @theme {
-  /* Cores das categorias — preservadas */
+  /* Cores das categorias */
   --color-marca-vermelho: #F53720;
   --color-marca-amarelo: #F8B41C;
   --color-marca-azul: #0875EA;
 
-  /* Nova identidade visual */
+  /* Identidade visual */
   --color-destaque: #FEE304;
   --color-marca-preto: #0B0B0B;
 
@@ -19,7 +19,7 @@
   --color-texto: #F5F5F5;
   --color-texto-suave: #A3A3A3;
 
-  /* Cores antigas preservadas para compatibilidade */
+  /* Compatibilidade */
   --color-tinta: #16130F;
   --color-tinta-suave: #5C5650;
 
