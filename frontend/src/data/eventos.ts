@@ -1,3 +1,4 @@
+
 import type { Evento } from '../types'
 
 export const eventos: Evento[] = [
@@ -12,6 +13,7 @@ export const eventos: Evento[] = [
     gratuito: true,
     criado_por: 1,
     categorias: [1, 5],
+    total_inscritos: 0,
   },
   {
     id: 2,
@@ -23,6 +25,7 @@ export const eventos: Evento[] = [
     gratuito: true,
     criado_por: 1,
     categorias: [2],
+    total_inscritos: 0,
   },
   {
     id: 3,
@@ -34,6 +37,7 @@ export const eventos: Evento[] = [
     gratuito: true,
     criado_por: 1,
     categorias: [3],
+    total_inscritos: 0,
   },
   {
     id: 4,
@@ -45,6 +49,7 @@ export const eventos: Evento[] = [
     gratuito: true,
     criado_por: 1,
     categorias: [1],
+    total_inscritos: 0,
   },
   {
     id: 5,
@@ -56,6 +61,7 @@ export const eventos: Evento[] = [
     gratuito: true,
     criado_por: 1,
     categorias: [4],
+    total_inscritos: 0,
   },
   {
     id: 6,
@@ -67,5 +73,6 @@ export const eventos: Evento[] = [
     gratuito: true,
     criado_por: 1,
     categorias: [6, 7],
+    total_inscritos: 0,
   },
 ]
