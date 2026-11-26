@@ -21,46 +21,47 @@ export default function Cabecalho() {
     <header className="border-b border-neutral-800 bg-fundo text-texto">
       <div className="mx-auto max-w-5xl px-4 sm:px-5">
 
-        {/* Logo e nome */}
-        <div className="flex h-14 items-center justify-between">
-          <Link to="/" className="flex items-center gap-2">
-            <img
-              src={simbolo}
-              alt=""
-              className="h-8 w-auto shrink-0"
-            />
+        
+{/* Logo e nome */}
+<div className="flex h-14 items-center justify-center sm:justify-between">
+  <Link to="/" className="flex items-center justify-center gap-2">
+    <img
+      src={simbolo}
+      alt=""
+      className="h-8 w-auto shrink-0"
+    />
 
-            <span className="hidden text-xl font-extrabold tracking-tight text-white sm:inline">
-              Casa De Cultura <span className="text-destaque">São Mateus</span>
-            </span>
-          </Link>
+    <span className="hidden text-xl font-extrabold tracking-tight text-white sm:inline">
+      Casa De Cultura <span className="text-destaque">São Mateus</span>
+    </span>
+  </Link>
 
-          {/* Login e saudação no computador */}
-          <div className="hidden items-center gap-4 sm:flex">
-            {autenticado && (
-              <span className="text-sm text-texto-suave">
-                Olá, {usuario?.nome || usuario?.email || 'usuário'}!
-              </span>
-            )}
+  {/* Login e saudação no computador */}
+  <div className="hidden shrink-0 items-center gap-4 sm:flex">
+    {autenticado && (
+      <span className="whitespace-nowrap text-sm text-texto-suave">
+        Olá, {usuario?.nome || usuario?.email || 'usuário'}!
+      </span>
+    )}
 
-            {autenticado ? (
-              <button
-                type="button"
-                onClick={sair}
-                className="rounded border-2 border-destaque px-3 py-1 font-semibold text-destaque hover:bg-destaque hover:text-black"
-              >
-                Sair
-              </button>
-            ) : (
-              <Link
-                to="/login"
-                className="rounded border-2 border-destaque px-3 py-1 font-semibold text-destaque hover:bg-destaque hover:text-black"
-              >
-                Entrar
-              </Link>
-            )}
-          </div>
-        </div>
+    {autenticado ? (
+      <button
+        type="button"
+        onClick={sair}
+        className="whitespace-nowrap rounded border-2 border-destaque px-3 py-1 font-semibold text-destaque hover:bg-destaque hover:text-black"
+      >
+        Sair
+      </button>
+    ) : (
+      <Link
+        to="/login"
+        className="whitespace-nowrap rounded border-2 border-destaque px-3 py-1 font-semibold text-destaque hover:bg-destaque hover:text-black"
+      >
+        Entrar
+      </Link>
+    )}
+  </div>
+</div>
 
         {/* Navegação */}
         <nav className="flex min-h-11 flex-wrap items-center justify-center gap-x-4 gap-y-2 border-t border-neutral-800 py-3 text-xs sm:min-h-0 sm:flex-nowrap sm:justify-end sm:gap-6 sm:border-0 sm:py-0 sm:pb-3 sm:text-sm">
